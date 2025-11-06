@@ -1,43 +1,74 @@
-# Department App 🎓
+# Department App
 
-A modern Flutter mobile application for managing department information, including people directory and infrastructure details with a beautiful dark/light theme support.
+A comprehensive Flutter mobile application for managing department information, including faculty profiles, infrastructure details, and user profiles with theme customization.
+
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 
 ## 📱 Features
 
 ### 🔐 Authentication
-- **Sign Up**: Create new user accounts with email validation
-- **Login**: Secure login system with password visibility toggle
-- **Local Storage**: User credentials stored securely using SharedPreferences
-- **Password Recovery**: Forgot password functionality
+- **Sign Up**: Create new user accounts with username, email, and password
+- **Login**: Secure authentication with form validation
+- **Data Persistence**: User credentials stored locally using SharedPreferences
 
-### 👥 People Directory
-- **Instructor List**: View all department instructors with profile pictures
-- **Search Functionality**: Real-time search by name, title, email, or office
-- **Contact Information**: Display name, title, phone, email, and office location
-- **Call Feature**: Direct call functionality with confirmation dialog
-- **Professional Profiles**: High-quality profile images for each instructor
+### 👥 People Management
+- View list of instructors with profile pictures
+- Search functionality to filter instructors by name, title, email, or office
+- Detailed instructor information including:
+  - Name and title
+  - Phone number
+  - Email address
+  - Office location
+- **Call Integration**: Direct phone dialer integration with confirmation dialog
+- Professional profile pictures for each instructor
 
-### 🏢 Infrastructure Management
-- **Classroom Gallery**: Grid view of all department classrooms
-- **Image Viewer**: Double-tap to enlarge classroom images
-- **Interactive Zoom**: Pinch to zoom and drag to pan on enlarged images
-- **Search Functionality**: Filter classrooms by name or description
-- **Detailed Information**: Capacity, equipment, and facility details
+### 🏢 Infrastructure
+- Grid view of department classrooms and facilities
+- High-quality images for each location
+- Search functionality to filter by room name or description
+- **Double-tap to enlarge**: Full-screen image viewer with zoom capabilities
+- Interactive image viewing with pinch-to-zoom and pan features
+- Detailed information for each facility including capacity and equipment
 
-### 👤 Profile Management
-- **Editable Profile**: Update username, email, phone number, and bio
-- **Profile Picture**: Avatar with first letter of username
-- **Account Information**: View account type, member since date, and status
-- **Theme Toggle**: Switch between dark and light modes
-- **Persistent Settings**: All changes saved locally
+### 👤 User Profile
+- Editable profile information:
+  - Username
+  - Email
+  - Phone number
+  - Bio
+- Profile picture with avatar (displays user's initial)
+- **Dark/Light Theme Toggle**: Seamless theme switching
+- Account information display (account type, member since, status)
+- Save and cancel functionality for profile edits
 
-### 🎨 UI/UX Features
-- **Dark Mode**: Full dark theme support with smooth transitions
-- **Light Mode**: Clean and modern light theme
-- **Responsive Design**: Adaptive layouts for different screen sizes
-- **Material Design**: Following Flutter Material Design principles
-- **Loading Indicators**: Visual feedback for async operations
-- **Error Handling**: User-friendly error messages
+### 🎨 Theme Support
+- **Light Mode**: Clean, modern light theme
+- **Dark Mode**: Eye-friendly dark theme
+- Theme preference persists across app restarts
+- Smooth theme transitions
+
+## 📸 Screenshots
+
+*(Add your screenshots here)*
+
+## 🛠️ Technologies Used
+
+- **Flutter**: Cross-platform mobile development framework
+- **Dart**: Programming language
+- **SharedPreferences**: Local data storage
+- **url_launcher**: Phone dialer integration
+- **Material Design**: UI/UX design system
+
+## 📦 Dependencies
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.0.0
+  url_launcher: ^6.0.0
+```
 
 ## 🚀 Getting Started
 
@@ -47,14 +78,13 @@ A modern Flutter mobile application for managing department information, includi
 - Dart SDK (2.17.0 or higher)
 - Android Studio / VS Code
 - Android Emulator or Physical Device
-- Git
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/department_app.git
-   cd department_app
+   git clone https://github.com/YOUR_USERNAME/department-app.git
+   cd department-app
    ```
 
 2. **Install dependencies**
@@ -67,181 +97,153 @@ A modern Flutter mobile application for managing department information, includi
    flutter run
    ```
 
-## 📦 Dependencies
+### Building for Release
 
-```yaml
-dependencies:
-  flutter:
-    sdk: flutter
-  shared_preferences: ^2.2.2  # Local data storage
-  url_launcher: ^6.2.2        # Launch URLs and phone calls
+**Android:**
+```bash
+flutter build apk --release
 ```
 
-## 🏗️ Project Structure
+**iOS:**
+```bash
+flutter build ios --release
+```
+
+## 📁 Project Structure
 
 ```
 lib/
-├── main.dart                      # App entry point and theme configuration
+├── main.dart                          # App entry point
 ├── models/
-│   ├── instructor.dart           # Instructor data model
-│   └── classroom_image.dart      # Classroom data model
+│   ├── instructor.dart                # Instructor data model
+│   └── classroom_image.dart           # Classroom data model
 └── screens/
-    ├── login_page.dart           # Login screen
-    ├── signup_page.dart          # Sign up screen
-    ├── home_page.dart            # Main navigation screen
-    ├── people_page.dart          # Instructors list with search
-    ├── infrastructure_page.dart  # Classrooms grid with search
-    ├── profile_page.dart         # User profile and settings
-    └── enlarged_image_page.dart  # Full-screen image viewer
+    ├── login_page.dart                # Login screen
+    ├── signup_page.dart               # Sign up screen
+    ├── home_page.dart                 # Main navigation screen
+    ├── people_page.dart               # Instructors list with search
+    ├── infrastructure_page.dart       # Classrooms grid with search
+    ├── profile_page.dart              # User profile and settings
+    └── enlarged_image_page.dart       # Full-screen image viewer
 ```
 
-## 🎯 How to Use
+## 🔑 Key Features Explained
 
-### First Time Setup
-1. Launch the app
-2. Click **"Sign Up"** to create an account
-3. Fill in your details (username, email, password)
-4. Click **"Sign Up"** button
-5. Return to login and enter your credentials
+### Search Functionality
+Both People and Infrastructure pages include real-time search:
+- Case-insensitive filtering
+- Searches across multiple fields
+- Instant results as you type
+- Clear button to reset search
 
-### Navigation
-- **People Tab**: View and search instructors, tap "Call" to contact
-- **Infrastructure Tab**: Browse classrooms, double-tap images to enlarge
-- **Profile Tab**: Edit your profile and toggle dark/light mode
+### Image Viewing
+Infrastructure images support:
+- Double-tap to open full-screen view
+- Pinch-to-zoom (0.5x to 4x)
+- Pan to navigate zoomed images
+- Loading indicators
+- Error handling for failed image loads
 
-### Making Calls
-1. Navigate to **People** tab
-2. Scroll to find an instructor or use search
-3. Tap the green **"Call"** button
-4. Review information in the confirmation dialog
-5. Tap **"Yes"** to initiate the call
+### Profile Management
+- Edit mode with save/cancel options
+- Form validation for email and required fields
+- Theme toggle with immediate visual feedback
+- Data persistence across app restarts
 
-### Viewing Classroom Details
-1. Navigate to **Infrastructure** tab
-2. Double-tap any classroom card
-3. Use pinch gestures to zoom
-4. Drag to pan around the image
-5. View capacity and equipment details at the bottom
+### Phone Integration
+- Native phone dialer integration
+- Confirmation dialog before calling
+- Error handling for devices without dialer
+- Works on real Android/iOS devices
 
-### Customizing Theme
-1. Navigate to **Profile** tab
-2. Toggle the **"Dark Mode"** switch
-3. Theme changes instantly across the app
-4. Preference is saved automatically
+## 🎯 Usage
 
-## 📸 Screenshots
+1. **First Time Setup**
+   - Launch the app
+   - Click "Sign Up" to create an account
+   - Fill in username, email, and password
+   - Click "Sign Up" to register
 
-### Light Theme
-- Clean and professional interface
-- High contrast for readability
-- Material Design color scheme
+2. **Login**
+   - Enter your username and password
+   - Click "Login" to access the app
 
-### Dark Theme
-- Eye-friendly dark background
-- Reduced eye strain
-- Perfect for low-light environments
+3. **Navigate**
+   - Use bottom navigation to switch between:
+     - **People**: View and search instructors
+     - **Infrastructure**: Browse facility images
+     - **Profile**: Manage your profile and settings
 
-## 🔧 Configuration
+4. **Search**
+   - Tap the search bar at the top
+   - Type to filter results
+   - Tap the X icon to clear search
 
-### Adding New Instructors
+5. **Call Instructor**
+   - Navigate to People page
+   - Tap "Call" button on any instructor card
+   - Confirm the call in the dialog
+   - Phone dialer opens with pre-filled number
 
-Edit `lib/screens/people_page.dart`:
+6. **View Images**
+   - Navigate to Infrastructure page
+   - Double-tap any classroom image
+   - Pinch to zoom, drag to pan
+   - Tap back button to return
 
-```dart
-static final List<Instructor> instructors = [
-  Instructor(
-    name: 'Dr. Your Name',
-    title: 'Your Title',
-    phone: '+1234567890',
-    email: 'your.email@university.edu',
-    office: 'Room XXX',
-    imageUrl: 'https://your-image-url.com/image.jpg',
-  ),
-  // Add more instructors...
-];
-```
-
-### Adding New Classrooms
-
-Edit `lib/screens/infrastructure_page.dart`:
-
-```dart
-static final List<ClassroomImage> classrooms = [
-  ClassroomImage(
-    name: 'Your Room Name',
-    imageUrl: 'https://your-image-url.com/room.jpg',
-    description: 'Capacity: XX students, Equipment: Your equipment',
-  ),
-  // Add more classrooms...
-];
-```
-
-## 🛠️ Customization
-
-### Change App Colors
-
-Edit `lib/main.dart`:
-
-```dart
-theme: ThemeData(
-  primarySwatch: Colors.blue, // Change to your color
-  // ... other theme properties
-),
-```
-
-### Modify Authentication
-
-The app uses `SharedPreferences` for local storage. For production, consider:
-- Firebase Authentication
-- Backend API integration
-- Secure token storage
+7. **Toggle Theme**
+   - Go to Profile tab
+   - Toggle the "Dark Mode" switch
+   - Theme changes immediately
 
 ## 🐛 Known Issues
 
-- **Phone Calls on Emulator**: Phone dialer may not work on Android emulators without a dialer app installed. Works perfectly on real devices.
-- **Image Loading**: Requires internet connection to load profile and classroom images.
+- Phone dialer may not work on Android emulators (works on real devices)
+- Image loading requires internet connection
 
 ## 🔮 Future Enhancements
 
-- [ ] Backend API integration
-- [ ] Real-time data synchronization
+- [ ] Profile picture upload
+- [ ] Email integration for contacting instructors
+- [ ] Calendar integration for scheduling
 - [ ] Push notifications
-- [ ] Calendar integration
-- [ ] Course scheduling
-- [ ] Attendance tracking
-- [ ] Announcements feed
-- [ ] Document sharing
 - [ ] Multi-language support
-- [ ] Biometric authentication
+- [ ] Offline mode with local database
+- [ ] Social features (comments, ratings)
+- [ ] Advanced filtering and sorting
+- [ ] Export/import data functionality
 
-## 📝 License
+## 🤝 Contributing
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
 - Email: your.email@example.com
 
 ## 🙏 Acknowledgments
 
 - Flutter team for the amazing framework
-- Unsplash for high-quality images
+- Unsplash for providing free stock images
 - Material Design for UI/UX guidelines
-- Community contributors
+- All contributors and testers
 
 ## 📞 Support
 
-If you encounter any issues or have questions:
-1. Check the [Issues](https://github.com/YOUR_USERNAME/department_app/issues) page
-2. Create a new issue with detailed description
-3. Contact the maintainer
-
-## 🌟 Show Your Support
-
-Give a ⭐️ if this project helped you!
+For support, email your.email@example.com or open an issue in the GitHub repository.
 
 ---
 
-**Made with ❤️ using Flutter**
+Made with ❤️ using Flutter
